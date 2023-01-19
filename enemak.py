@@ -13,8 +13,12 @@ class Enemka:
         self.y = 0
         self.platno = okenko
 
-    def pohyb(self):
-        self.y += 5
+    def pohyb(self, timespeed):
+        self.y += 5*timespeed
+
 
     def draw(self):
         self.platno.blit(image, (self.x * 250 - 50, self.y))
+    def passed(self):
+        if self.y > 900:
+            return True

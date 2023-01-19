@@ -22,3 +22,9 @@ class Auticko:
 
     def draw(self):
         self.okenko.blit(image, (self.x * 250 - 50, 750))
+
+    def kolize(self, enemak):
+        if self.x == enemak.x:
+           if 650 < enemak.y and 850 > enemak.y:
+               return True
+
