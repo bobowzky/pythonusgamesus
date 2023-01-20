@@ -3,7 +3,7 @@ import random
 
 import pygame as pg
 
-original_image = pg.image.load(os.path.join("./images", "van.png"))
+original_image = pg.image.load(os.path.join("./images", "taxi.png"))
 image = pg.transform.scale(original_image, (50, 100))
 
 
@@ -18,7 +18,7 @@ class Enemka:
 
 
     def draw(self):
-        self.platno.blit(image, (self.x * 250 - 50, self.y))
+        self.platno.blit(image, (self.x * 250 - 70, self.y))
     def passed(self):
         if self.y > 900:
             return True

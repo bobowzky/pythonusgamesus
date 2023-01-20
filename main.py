@@ -2,10 +2,15 @@ import pygame as pg
 import auticko
 import enemak
 import road
+from pygame import mixer
 
-
+banger = 'banger.mp3'
 def main():
     pg.init()
+    pg.mixer.init()
+    pg.mixer.music.load(banger)
+    pg.mixer.music.set_volume(0.2)
+    pg.mixer.music.play(-1)
     pg.display.set_caption("Auticka")
     okenko = pg.display.set_mode((900,900))
     clock = pg.time.Clock()
@@ -17,11 +22,11 @@ def main():
     body = 0
     font = pg.font.Font(None, 32)
     font_velky = pg.font.Font(None, 72)
-    timespeed = 1
+    timespeed = 1.5
 
     while running:
         time+=timespeed
-        timespeed+=0.001
+        timespeed+=0.002
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
@@ -42,7 +47,7 @@ def main():
             okenko.blit(text, (0,0,50,50))
             if enemy.passed():
                 enemy = enemak.Enemka(okenko)
-                body += 69
+                body += 50
             if auto.kolize(enemy):
                 game = False
         else:
@@ -53,18 +58,20 @@ def main():
             textRect = text.get_rect()
             textRect.center = (450, 400)
             text2Rect = text.get_rect()
-            text2Rect.center = (470, 450)
+            text2Rect.center = (450, 450)
             text3Rect = text.get_rect()
             text3Rect.center = (255, 500)
             okenko.blit(text, textRect)
             okenko.blit(text2, text2Rect)
             okenko.blit(text3, text3Rect)
+            pg.mixer.music.stop()
             if pg.key.get_pressed()[pg.K_r]:
                 game = True
                 time = 0
                 enemy = enemak.Enemka(okenko)
                 body = 0
-                timespeed = 1
+                timespeed = 1.5
+                pg.mixer.music.play(-1)
 
         pg.display.flip()
         clock.tick(60)
