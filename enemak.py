@@ -18,7 +18,7 @@ class Enemka:
 
 
     def draw(self):
-        self.platno.blit(image, (self.x * 250 - 70, self.y))
+        self.platno.blit(image, (self.x * 250 - 75, self.y))
     def passed(self):
         if self.y > 900:
             return True

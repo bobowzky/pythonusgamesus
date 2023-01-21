@@ -15,13 +15,11 @@ class Auticko:
     def pohyb(self, smer):
         if smer == "do_prava" and self.x < 3:
             self.x += 1
-            print(self.x)
         elif smer == "do_leva" and self.x > 1:
             self.x -= 1
-            print(self.x)
 
     def draw(self):
-        self.okenko.blit(image, (self.x * 250 - 70, 750))
+        self.okenko.blit(image, (self.x * 250 - 75, 750))
 
     def kolize(self, enemak):
         if self.x == enemak.x:
